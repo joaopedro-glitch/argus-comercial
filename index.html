@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARGUS Watch - Proposta de Valor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            primary: '#0ea5e9',
+                            secondary: '#10b981',
+                            accent: '#f43f5e',
+                            surface: '#f8fafc'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        body { scroll-behavior: smooth; }
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+        }
+        
+        .pdf-content { background-color: #f8fafc; }
+        
+        @media print {
+            .no-print { display: none !important; }
+            .pdf-content { padding-top: 0 !important; }
+            section { break-inside: avoid; margin-bottom: 2rem; }
+            .page-break { page-break-before: always; }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans">
+
+    <!-- HEADER -->
+    <header class="no-print fixed top-0 w-full z-50 glass border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-brand-dark rounded-xl flex items-center justify-center text-white">
+                    <i data-lucide="eye" class="w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tighter italic">ARGUS<span class="text-brand-primary not-italic text-sm ml-1">WATCH</span></span>
+            </div>
+            <div class="hidden md:flex space-x-8 text-sm font-semibold text-slate-500">
+                <a href="#sumario" class="hover:text-brand-primary transition-colors">Sumário</a>
+                <a href="#sobre" class="hover:text-brand-primary transition-colors">Sobre</a>
+                <a href="#solucao" class="hover:text-brand-primary transition-colors">A Solução</a>
+                <a href="#escopo" class="hover:text-brand-primary transition-colors">Escopo</a>
+            </div>
+            <button onclick="generatePDF()" class="bg-brand-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-sky-600 transition-all flex items-center shadow-lg shadow-sky-200">
+                <i data-lucide="file-down" class="w-4 h-4 mr-2"></i>
+                Gerar PDF
+            </button>
+        </div>
+    </header>
+
+    <div id="capture-area" class="pdf-content pt-24">
+        
+        <!-- 01. SUMÁRIO EXECUTIVO -->
+        <section id="sumario" class="py-12 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="p-10 md:p-16 bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 border-l-8 border-brand-primary relative overflow-hidden">
+                    <h3 class="text-sm font-black uppercase text-brand-primary tracking-[0.2em] mb-8 flex items-center">
+                        <i data-lucide="file-text" class="w-5 h-5 mr-3"></i> 01. Sumário Executivo
+                    </h3>
+                    
+                    <div class="space-y-6 text-slate-700 leading-relaxed text-base md:text-lg">
+                        <p>A <strong>Baumgratz Code</strong> apresenta a proposta para disponibilização do <strong>ARGUS Watch</strong>, uma plataforma corporativa de monitoramento e gestão de riscos assistenciais, que integra recursos de Inteligência Artificial aplicada à prevenção e ao controle de infecções e à Segurança do Paciente.</p>
+                        
+                        <p>Desenvolvida para apoiar o Controle de Infecção Hospitalar (CCIH) e o Núcleo de Segurança do Paciente (NSP), a solução permite o acompanhamento contínuo de indicadores, a identificação de padrões de risco, o suporte à tomada de decisão e o gerenciamento de investigações de eventos adversos.</p>
+                        
+                        <p>Além disso, o ARGUS Watch contempla o controle e a validação dos processos de higienização de ambientes, contribuindo para a redução de riscos, a otimização de custos operacionais e o fortalecimento da qualidade assistencial.</p>
+                        
+                        <p>Por meio de modelos avançados de IA e análise preditiva, o ARGUS Watch transforma grandes volumes de dados assistenciais e operacionais em insights estratégicos, permitindo que o hospital atue de forma preventiva, antecipando eventos críticos que impactam diretamente a qualidade do cuidado, os custos assistenciais e a sustentabilidade da operação.</p>
+                        
+                        <div class="bg-slate-50 p-6 rounded-2xl border-l-4 border-brand-secondary italic text-slate-600">
+                            "Ao adotar o ARGUS Watch, o hospital passa a operar com uma visão data-driven, substituindo análises reativas por gestão preditiva de riscos, com impacto direto em ROI, eficiência operacional, conformidade regulatória e posicionamento estratégico."
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 02. SOBRE A EMPRESA -->
+        <section id="sobre" class="py-12 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="p-10 md:p-16 bg-brand-dark text-white rounded-[3rem] shadow-2xl relative overflow-hidden">
+                    <h3 class="text-sm font-black uppercase text-brand-secondary tracking-[0.2em] mb-8 flex items-center">
+                        <i data-lucide="info" class="w-5 h-5 mr-3"></i> 02. Sobre a Baumgratz Code
+                    </h3>
+                    
+                    <div class="grid md:grid-cols-5 gap-12 items-center">
+                        <div class="md:col-span-3 space-y-6 text-slate-300 leading-relaxed">
+                            <p>A <strong>Baumgratz Code</strong> é uma empresa de tecnologia especializada em soluções digitais, com forte aplicação de Inteligência Artificial, automação e análise avançada de dados.</p>
+                            <p>Desenvolvemos plataformas que transformam dados assistenciais e operacionais em insights preditivos, apoiando decisões estratégicas, redução de riscos e melhoria contínua da qualidade do cuidado.</p>
+                        </div>
+                        <div class="md:col-span-2 grid grid-cols-2 gap-4">
+                            <div class="p-4 bg-white/5 rounded-2xl text-center border border-white/10 italic">
+                                <div class="text-brand-secondary font-bold text-2xl">IA</div>
+                                <div class="text-[10px] uppercase text-slate-400">Preditiva</div>
+                            </div>
+                            <div class="p-4 bg-white/5 rounded-2xl text-center border border-white/10">
+                                <div class="text-brand-primary font-bold text-2xl">DATA</div>
+                                <div class="text-[10px] uppercase text-slate-400">Driven</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. A SOLUÇÃO - ARGUS WATCH -->
+        <section id="solucao" class="py-16 px-6 page-break">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-12">
+                    <h3 class="text-sm font-black uppercase text-brand-primary tracking-[0.2em] mb-4">03. A Solução – ARGUS Watch</h3>
+                    <p class="text-slate-600 max-w-3xl">A plataforma integra ferramentas avançadas com foco em previsibilidade, redução de riscos assistenciais e eficiência operacional.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Coluna 1: Assistencial -->
+                    <div class="space-y-6">
+                        <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 card-hover">
+                            <div class="w-12 h-12 bg-sky-100 text-sky-600 rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 mb-3">Assistencial e Clínico</h4>
+                            <ul class="text-xs space-y-3 text-slate-500">
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-500 mr-2 mt-0.5"></i> <strong>Sinais Vitais:</strong> Filtros avançados e alertas automáticos.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-500 mr-2 mt-0.5"></i> <strong>Dispositivos:</strong> Rastreio de tempo e uso invasivo.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-500 mr-2 mt-0.5"></i> <strong>Cirurgias:</strong> Classificação de risco e ISC.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-sky-500 mr-2 mt-0.5"></i> <strong>Exames:</strong> Integração API (Culturas/Antibiogramas).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 2: CCIH & NSP -->
+                    <div class="space-y-6">
+                        <div class="p-6 bg-white rounded-3xl shadow-sm border border-slate-100 card-hover">
+                            <div class="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="shield-check" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 mb-3">CCIH, NSP e Higiene</h4>
+                            <ul class="text-xs space-y-3 text-slate-500">
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2 mt-0.5"></i> <strong>Infecções:</strong> IRAS, PAV, ITU, ICS e Isolamentos.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2 mt-0.5"></i> <strong>Bundles:</strong> Prevenção e Índices (SAPS3, SIRS).</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2 mt-0.5"></i> <strong>Higienização:</strong> Planos de limpeza e checklists.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-500 mr-2 mt-0.5"></i> <strong>Produtos Químicos:</strong> FISPQ (GHS) e alertas EPI.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Coluna 3: Tecnologia -->
+                    <div class="space-y-6">
+                        <div class="p-6 bg-slate-900 text-white rounded-3xl shadow-xl card-hover">
+                            <div class="w-12 h-12 bg-white/10 text-brand-primary rounded-xl flex items-center justify-center mb-4">
+                                <i data-lucide="cpu" class="w-6 h-6"></i>
+                            </div>
+                            <h4 class="font-bold mb-3">Tecnologia e Infra</h4>
+                            <ul class="text-xs space-y-3 text-slate-400">
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary mr-2 mt-0.5"></i> <strong>Ficheiros:</strong> Upload em lote vinculado a eventos.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary mr-2 mt-0.5"></i> <strong>Notificações:</strong> Alertas e relatórios via e-mail.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary mr-2 mt-0.5"></i> <strong>Segurança:</strong> Perfis de acesso e logs de auditoria.</li>
+                                <li class="flex items-start"><i data-lucide="check" class="w-3.5 h-3.5 text-brand-primary mr-2 mt-0.5"></i> <strong>Arquitetura:</strong> Dashboards BI em tempo real.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. ESCOPO DE FORNECIMENTO -->
+        <section id="escopo" class="py-16 px-6 bg-slate-100/50">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-10">
+                    <h3 class="text-sm font-black uppercase text-brand-primary tracking-[0.2em] mb-4">04. Escopo de Fornecimento</h3>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <div class="space-y-6">
+                        <div class="flex space-x-4">
+                            <div class="shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-primary">
+                                <i data-lucide="cloud" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 mb-1">Modelo SaaS</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">Inclui licenciamento, hospedagem segura, atualizações automáticas e backup periódico.</p>
+                            </div>
+                        </div>
+                        <div class="flex space-x-4">
+                            <div class="shrink-0 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-sm text-brand-primary">
+                                <i data-lucide="lock" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 mb-1">Segurança e LGPD</h5>
+                                <p class="text-xs text-slate-500 leading-relaxed">Conformidade com a Lei Geral de Proteção de Dados, garantindo governança e integridade.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="p-8 bg-white rounded-[2.5rem] border border-slate-200 shadow-sm relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-sky-50 rounded-full -mr-16 -mt-16"></div>
+                        <h4 class="text-xs font-black text-slate-400 uppercase tracking-widest mb-4">Investimento Mensal</h4>
+                        <div class="flex items-baseline space-x-2">
+                            <span class="text-4xl font-black text-slate-900">R$ 2.195,24</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-6 italic">Contempla suporte especializado e treinamento das equipas operacionais.</p>
+                    </div>
+                </div>
+
+                <!-- ROI Chart minimal -->
+                <div class="mt-12 p-8 bg-white rounded-[2.5rem] border border-slate-200 shadow-sm">
+                    <h4 class="text-sm font-bold text-slate-800 mb-6 flex items-center">
+                        <i data-lucide="trending-down" class="w-4 h-4 mr-2 text-green-500"></i>
+                        Impacto Estimado na Eficiência Assistencial (Redução de Custos IRAS)
+                    </h4>
+                    <div class="h-[180px]">
+                        <canvas id="roiChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER PDF -->
+        <footer class="py-12 px-6 text-center border-t border-slate-200 mt-12">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <span class="text-xl font-extrabold tracking-tighter italic">ARGUS<span class="text-brand-primary not-italic text-xs ml-1">WATCH</span></span>
+            </div>
+            <p class="text-slate-400 text-[10px]">
+                Proposta válida por 15 dias. Baumgratz Code &copy; 2024. <br>
+                Tratamento de dados sensíveis em total conformidade com a LGPD.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        window.onload = function() {
+            const ctx = document.getElementById('roiChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4', 'Mês 5', 'Mês 6'],
+                    datasets: [{
+                        label: 'Custos Adicionais IRAS (%)',
+                        data: [100, 80, 65, 50, 45, 40],
+                        borderColor: '#0ea5e9',
+                        backgroundColor: 'rgba(14, 165, 233, 0.05)',
+                        fill: true,
+                        tension: 0.4,
+                        borderWidth: 2,
+                        pointRadius: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { display: false },
+                        x: { grid: { display: false }, ticks: { font: { size: 10 } } }
+                    }
+                }
+            });
+        };
+
+        function generatePDF() {
+            const element = document.getElementById('capture-area');
+            const opt = {
+                margin: [0, 0],
+                filename: 'Proposta_Tecnica_ARGUS_Watch.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, useCORS: true, letterRendering: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            const btn = event.currentTarget;
+            btn.innerHTML = '<i class="animate-spin" data-lucide="loader-2"></i>';
+            lucide.createIcons();
+            btn.disabled = true;
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                btn.innerHTML = '<i data-lucide="file-down" class="w-4 h-4 mr-2"></i> Gerar PDF';
+                btn.disabled = false;
+                lucide.createIcons();
+            });
+        }
+    </script>
+</body>
+</html>
