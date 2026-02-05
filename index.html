@@ -626,3 +626,32 @@
     </script>
 </body>
 </html>
+@media print {
+    body {
+        background: #ffffff !important;
+        overflow-x: hidden !important;
+    }
+
+    .pdf-content {
+        max-width: 210mm;
+        margin: 0 auto;
+        background: #ffffff;
+    }
+
+    /* remove efeitos problemáticos */
+    * {
+        box-shadow: none !important;
+        backdrop-filter: none !important;
+    }
+
+    /* controla quebra */
+    .page-break {
+        break-before: page;
+    }
+
+    /* evita grid cortado */
+    .grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
