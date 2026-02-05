@@ -623,11 +623,14 @@
                 lucide.createIcons();
             });
         }
-        jsPDF: {
-    unit: 'px',
-    format: [1200, document.body.scrollHeight]
+ @media print {
+    * {
+        page-break-before: auto !important;
+        page-break-after: auto !important;
+        page-break-inside: avoid !important;
+        break-before: auto !important;
+        break-after: auto !important;
+        break-inside: avoid !important;
+    }
 }
 
-    </script>
-</body>
-</html>
