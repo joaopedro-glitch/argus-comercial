@@ -626,104 +626,74 @@
     </script>
 </body>
 </html>
-@media print {
-    body {
+<head>
+  <meta charset="UTF-8">
+
+  <style>
+    @media print {
+
+      @page {
+        size: A4;
+        margin: 20mm;
+      }
+
+      * {
+        box-sizing: border-box;
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      html, body {
+        width: 210mm;
+        margin: 0;
+        padding: 0;
         background: #ffffff !important;
         overflow-x: hidden !important;
-    }
+        font-family: Arial, Helvetica, sans-serif;
+      }
 
-    .pdf-content {
-        max-width: 210mm;
-        margin: 0 auto;
-        background: #ffffff;
-    }
+      section,
+      article,
+      div {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
 
-    /* remove efeitos problemáticos */
-    * {
-        box-shadow: none !important;
-        backdrop-filter: none !important;
-    }
+      h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
 
-    /* controla quebra */
-    .page-break {
+      p {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        orphans: 3;
+        widows: 3;
+      }
+
+      ul, ol, li,
+      table, thead, tbody, tr, td, th {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      .page-break {
+        page-break-before: always;
         break-before: page;
+      }
+
+      .no-break {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* remove flex/grid que quebram PDF */
+      .flex,
+      .grid {
+        display: block !important;
+      }
     }
+  </style>
+</head>
 
-    /* evita grid cortado */
-    .grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-/* ===============================
-   CONFIGURAÇÃO GLOBAL DE PDF
-   =============================== */
-
-@page {
-  size: A4;
-  margin: 20mm;
-}
-
-/* Regras globais de quebra */
-* {
-  box-sizing: border-box;
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Estrutura do documento */
-html, body {
-  width: 210mm;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Blocos principais */
-section,
-article,
-div {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Títulos nunca ficam no fim da página */
-h1, h2, h3, h4, h5, h6 {
-  page-break-after: avoid;
-  break-after: avoid;
-}
-
-/* Parágrafos sem viúvas e órfãos */
-p {
-  page-break-inside: avoid;
-  break-inside: avoid;
-  orphans: 3;
-  widows: 3;
-}
-
-/* Listas e tabelas */
-ul, ol, li,
-table, thead, tbody, tr, td, th {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Classe para forçar nova página (uso pontual) */
-.page-break {
-  page-break-before: always;
-  break-before: page;
-}
-
-/* Classe para impedir quebra total */
-.no-break {
-  page-break-inside: avoid;
-  break-inside: avoid;
-}
-
-/* Ajuste para layouts modernos */
-@media print {
-  .flex,
-  .grid {
-    display: block !important;
-  }
-}
 
